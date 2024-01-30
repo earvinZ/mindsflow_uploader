@@ -1,0 +1,15 @@
+{
+  "name": "anyask_uploader",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "command-line-args": "^5.2.1"
+  },
+  "scripts": {
+    "stop": "if [ -f ./logs/nginx.pid ]; then openresty -p `pwd` -s stop; else echo 'openresty not running'; fi",
+    "write_conf": "node upload-cli.js",
+    "print_conf": "node upload-cli.js --print-only",
+    "start":"if [ -f ./logs/nginx.pid ];then echo 'reload'; openresty -p `pwd` -c conf/nginx.conf -s reload; else echo 'start'; openresty -p `pwd` -c conf/nginx.conf;fi"
+  }
+}
